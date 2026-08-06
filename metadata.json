@@ -1,0 +1,6 @@
+{
+  "name": "Linkora - Social Chat App",
+  "description": "A modern, high-end Social Chat & Blogging Web App designed exclusively with a Mobile-First UX.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

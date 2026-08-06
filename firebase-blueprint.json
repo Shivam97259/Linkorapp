@@ -1,0 +1,47 @@
+{
+  "collections": [
+    {
+      "name": "users",
+      "description": "Stores user profiles",
+      "securityRules": {
+        "read": "request.auth != null",
+        "create": "request.auth != null && request.auth.uid == documentId",
+        "update": "request.auth != null && request.auth.uid == documentId",
+        "delete": "false"
+      },
+      "schema": {
+        "uid": { "type": "string" },
+        "displayName": { "type": "string" },
+        "username": { "type": "string" },
+        "email": { "type": "string" },
+        "photoURL": { "type": "string", "optional": true },
+        "bio": { "type": "string", "optional": true },
+        "createdAt": { "type": "timestamp" },
+        "onlineStatus": { "type": "boolean" }
+      }
+    },
+    {
+      "name": "posts",
+      "description": "Stores social media posts",
+      "securityRules": {
+        "read": "request.auth != null",
+        "create": "request.auth != null && request.resource.data.authorId == request.auth.uid",
+        "update": "request.auth != null && resource.data.authorId == request.auth.uid",
+        "delete": "request.auth != null && resource.data.authorId == request.auth.uid"
+      },
+      "schema": {
+        "authorId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "authorHandle": { "type": "string" },
+        "authorInitials": { "type": "string", "optional": true },
+        "authorAvatarUrl": { "type": "string", "optional": true },
+        "content": { "type": "string" },
+        "imageUrl": { "type": "string", "optional": true },
+        "createdAt": { "type": "timestamp" },
+        "timestamp": { "type": "string" },
+        "likes": { "type": "number" },
+        "comments": { "type": "array" }
+      }
+    }
+  ]
+}
